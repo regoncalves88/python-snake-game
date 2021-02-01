@@ -37,13 +37,15 @@ while not game_over:
 
     # Hit the Wall
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_over = True
-        scoreboard.game_over()
+        scoreboard.reset()
+        snake.reset()
+        time.sleep(1)
 
     # Hit the Tail
     for segment in snake.segments[1:len(snake.segments)]:
         if snake.head.distance(segment) < 10:
-            game_over = True
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
+            time.sleep(1)
 
 screen.exitonclick()
